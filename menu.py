@@ -5,6 +5,7 @@ class Menu:
         while True:
             print("1) Mostrar Usuarios")
             print("2) Agregar Usuario")
+            print("3) Buscar")
             print("0) Salir")
             op = input()
             
@@ -12,6 +13,8 @@ class Menu:
                 self.mostrar()
             elif op == "2":
                 self.capturar()
+            elif op == "3":
+                self.buscar()            
             elif op == "0":
                 break
                 
@@ -29,4 +32,10 @@ class Menu:
         tipo = input("Tipo: ")
         
         self.inv.insertar_usuario([nombre, apellido1, apellido2, correo, password, tipo])
+    
+    def buscar(self):
+        palabra = input("Ingresa la palabra de busqueda")
+        lista = self.inv.buscar_usuario(palabra)
+        for u in lista:
+            print("{0:2} {1:10} {2:8} {3:8} {4:15} {5:6} {6:1}".format(u['id'], u['nombre'], u['apellido1'], u['apellido2'], u['correo'], u['password'], u['tipo']))
                   

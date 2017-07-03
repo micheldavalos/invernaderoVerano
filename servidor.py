@@ -32,4 +32,12 @@ def agregar_usuario():
     respuesta.headers.add('Access-Control-Allow-Origin', '*')
     return respuesta
 
+@app.route("/buscar_usuario", methods=['POST'])
+def buscar_usuario():
+    print(request.form)
+    palabra = request.form['palabra']
+    lista = inv.buscar_usuario(palabra)
+    respuesta = jsonify(lista)
+    respuesta.headers.add('Access-Control-Allow-Origin', '*')
+    return respuesta
 app.run()
